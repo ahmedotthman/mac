@@ -8,25 +8,23 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+    - uses: actions/checkout@v2
+
+    - name: Cache Node.js modules
+      uses: actions/cache@v2
+      with:
+        path: ~/.npm
+        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+        restore-keys: |
+          ${{ runner.os }}-node-
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '21.5.0'  
-
-    - name: Set up Python
-      run: sudo apt-get install python3.9
-
-    - name: Install distutils
-      run: sudo apt-get install python3-distutils
-
-    - name: Clean npm Cache
-      run: npm cache clean --force
+        node-version: '14'  # Adjust as per your Electron version compatibility
 
     - name: Install dependencies
       run: npm install
