@@ -24,10 +24,13 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'  # Adjust as per your Electron version compatibility
+        node-version: '16.4.0'
 
     - name: Install dependencies
       run: npm install
+
+    - name: Rebuild native modules
+      run: npm run rebuild
 
     - name: Build Electron app for macOS
       run: npm run build
