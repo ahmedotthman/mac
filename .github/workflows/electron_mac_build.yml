@@ -18,8 +18,7 @@ jobs:
       with:
         path: ~/.npm
         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
+        restore-keys: ${{ runner.os }}-node-
 
     - name: Set up Node.js
       uses: actions/setup-node@v2
@@ -34,8 +33,13 @@ jobs:
     - name: Modify PATH for Python
       run: echo "/Users/runner/hostedtoolcache/Python/3.12.1/x64/bin" >> $GITHUB_PATH
 
+    - name: Install Python dependencies
+      run: |
+        python -m pip install --upgrade pip
+        python -m pip install setuptools wheel
+
     - name: Configure node-gyp Python path
-      run: npm config set python /Users/runner/hostedtoolcache/Python/3.12.1/x64/bin/python
+      run: npm config set python $(which python)
 
     - name: Install npm dependencies
       run: npm install
