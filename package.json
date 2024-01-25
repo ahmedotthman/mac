@@ -20,8 +20,10 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.2.0",
     "electron": "^16.0.0",
     "electron-builder": "^22.0.5",
-    "electron-rebuild": "^3.2.9",
-    "dmg-license": "1.0.11"
+    "@electron/rebuild": "^3.2.9",
+    "dmg-license": "1.0.11",
+    "@electron/osx-sign": "^0.5.0",
+    "@electron/asar": "^3.2.0"
   },
   "dependencies": {
     "bindings": "^1.5.0",
