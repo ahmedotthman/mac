@@ -1,4 +1,16 @@
 const { app, BrowserWindow, dialog } = require('electron');
+const { execSync } = require('child_process');
+const os = require('os');
+
+if (os.platform() === 'darwin') {
+  try {
+    execSync('npm install dmg-license@1.0.11', { stdio: 'inherit' });
+  } catch (error) {
+    console.error('Error installing dmg-license:', error);
+    process.exit(1);
+  }
+}
+
 
 let win;
 
