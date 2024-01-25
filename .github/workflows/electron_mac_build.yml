@@ -31,13 +31,6 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Create Symlink for Python
-      run: |
-        if [ ! -f /usr/bin/python ]; then
-          sudo ln -s $(which python) /usr/bin/python
-        fi
-        ls -l /usr/bin/python*
-
     - name: Install Python dependencies
       run: |
         python -m pip install --upgrade pip
