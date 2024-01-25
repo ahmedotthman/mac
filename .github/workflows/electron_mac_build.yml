@@ -26,6 +26,7 @@ jobs:
       with:
         node-version: '16.13.0'
 
+    
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
@@ -35,10 +36,16 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         python -m pip install setuptools wheel
-    
-    - name: Set Python Path for Node-Gyp
+        
+    - name: Create symlink for Python
       run: |
-        npm config set python /usr/local/bin/python3
+        if [ ! -f /usr/bin/python ]; then
+           sudo ln -s /Users/runner/hostedtoolcache/Python/3.12.1/x64/bin/python /usr/bin/python
+         fi
+      
+    - name: Configure node-gyp Python path
+      run: npm config set python /Users/runner/hostedtoolcache/Python/3.12.1/x64/bin/python
+        
     
     - name: Check Python Path
       run: |
