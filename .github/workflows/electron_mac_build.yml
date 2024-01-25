@@ -26,6 +26,17 @@ jobs:
       with:
         node-version: '16.13.0'
 
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Modify PATH for Python
+      run: echo "/Users/runner/hostedtoolcache/Python/3.12.1/x64/bin" >> $GITHUB_PATH
+
+    - name: Configure node-gyp Python path
+      run: npm config set python /Users/runner/hostedtoolcache/Python/3.12.1/x64/bin/python
+
     - name: Install npm dependencies
       run: npm install
 
