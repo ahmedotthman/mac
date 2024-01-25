@@ -1,7 +1,7 @@
 {
   "name": "ragabology",
   "version": "1.0.0",
-  "description": "education application for biology/medical students",
+  "description": "education for biology/medical students",
   "main": "index.js",
   "scripts": {
     "start": "electron-forge start",
