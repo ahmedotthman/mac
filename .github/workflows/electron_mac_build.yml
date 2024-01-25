@@ -15,6 +15,13 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Debug Python path
+      run: |
+       echo "Python Path: $PYTHON"
+       s -l /usr/bin/python*
+       ls -l /usr/local/bin/python*
+
+
     - name: Cache Node.js modules
       uses: actions/cache@v2
       with:
