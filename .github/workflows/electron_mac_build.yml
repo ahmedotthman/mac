@@ -26,6 +26,11 @@ jobs:
       with:
         node-version: '16.4.0'
 
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # This sets up Python 3
+
     - name: Install dependencies
       run: npm install
 
