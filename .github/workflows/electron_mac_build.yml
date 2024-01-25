@@ -31,14 +31,8 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Debug Python path
-      run: |
-        echo "Python Path: $PYTHON"
-        ls -l /usr/bin/python*
-        ls -l /usr/local/bin/python*
-      shell: /bin/bash -e {0}
-      env:
-        PYTHON: /usr/local/bin/python3
+    - name: Modify PATH for Python
+      run: echo "/usr/local/bin:$PATH" >> $GITHUB_ENV
 
     - name: Install Python dependencies
       run: |
@@ -52,4 +46,5 @@ jobs:
       run: npm run rebuild
 
     - name: Build Electron app for macOS
-      run: npm run build
+      run: |
+        npm run build
