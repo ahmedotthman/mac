@@ -13,12 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Manually Install Python 2
-      run: |
-        curl -O https://www.python.org/ftp/python/2.7.18/python-2.7.18-macosx10.9.pkg
-        sudo installer -pkg python-2.7.18-macosx10.9.pkg -target /
-        echo "PYTHON_PATH=/usr/local/bin/python2" >> $GITHUB_ENV
-
     - name: Cache Node.js modules
       uses: actions/cache@v2
       with:
@@ -31,6 +25,16 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '16.13.0'
+
+    - name: Manually Install Python 2
+      run: |
+        curl -O https://www.python.org/ftp/python/2.7.18/python-2.7.18-macosx10.9.pkg
+        sudo installer -pkg python-2.7.18-macosx10.9.pkg -target /
+        echo "PYTHON_PATH=/usr/local/bin/python2" >> $GITHUB_ENV
+  
+    
+    - name: Set PYTHON_PATH environment variable
+      run: echo "PYTHON_PATH=$(which python)" >> $GITHUB_ENV
 
     - name: Install npm dependencies
       run: npm install
