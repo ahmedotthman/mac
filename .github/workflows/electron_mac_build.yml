@@ -31,12 +31,6 @@ jobs:
         # Commands to download and install Python 2
         # Set PYTHON_PATH to the installed Python 2 binary
     
-
-    - name: Set up Python 2
-      uses: actions/setup-python@v2
-      with:
-        python-version: '2.x'
-
     - name: Set PYTHON_PATH environment variable
       run: echo "PYTHON_PATH=$(which python)" >> $GITHUB_ENV
 
