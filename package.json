@@ -21,8 +21,12 @@
     "@electron-forge/plugin-auto-unpack-natives": "^7.2.0",
     "electron": "^16.0.0",
     "electron-rebuild": "^3.2.9",
-    "electron-builder": "^22.0.5" 
+    "electron-builder": "^22.0.5",
+    
   },  
+  "optionalDependencies": {
+    "dmg-license": "1.0.11"
+  },
   "dependencies": {
     "bindings": "^1.5.0",
     "child_process": "^1.0.2",
