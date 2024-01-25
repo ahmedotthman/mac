@@ -8,7 +8,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "electron-builder --mac",
     "package": "electron-forge package",
-    "postinstall": "if [ \"$npm_config_target_platform\" == \"darwin\" ]; then electron-builder install-app-deps; fi",
     "make": "electron-forge make"
   },
   "author": "Technox Education",
@@ -21,8 +20,7 @@
     "@electron-forge/maker-zip": "^7.2.0",
     "@electron-forge/plugin-auto-unpack-natives": "^7.2.0",
     "electron": "^16.0.0",
-    "electron-rebuild": "^3.2.9",
-    "electron-builder": "^22.0.5"  
+    "electron-rebuild": "^3.2.9"
   },
   "dependencies": {
     "bindings": "^1.5.0",
