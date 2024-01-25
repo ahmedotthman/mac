@@ -26,6 +26,12 @@ jobs:
       with:
         node-version: '16.13.0'
 
+    - name: Manually Install Python 2
+      run: |
+        # Commands to download and install Python 2
+        # Set PYTHON_PATH to the installed Python 2 binary
+    
+
     - name: Set up Python 2
       uses: actions/setup-python@v2
       with:
