@@ -1,15 +1,13 @@
 {
   "name": "ragabology",
   "version": "1.0.0",
-  "description": "education for biology and medical students",
+  "description": "education for biology/medical students",
   "main": "index.js",
   "scripts": {
     "start": "electron-forge start",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "electron-builder --mac",
-    "rebuild": "electron-rebuild",
-    "postinstall": "node install-dmg-license.js"
-
+    "rebuild": "electron-rebuild"
   },
   "author": "Technox Education",
   "license": "ISC",
@@ -23,10 +21,10 @@
     "electron": "^16.0.0",
     "electron-builder": "^22.0.5",
     "@electron/rebuild": "^3.2.9",
+    "dmg-license": "1.0.11",
     "@electron/osx-sign": "^1.0.5",
     "@electron/asar": "^3.2.0"
   },
-  
   "dependencies": {
     "bindings": "^1.5.0",
     "child_process": "^1.0.2",
