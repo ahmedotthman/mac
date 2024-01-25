@@ -8,6 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "electron-builder --mac",
     "package": "electron-forge package",
+    "postinstall": "if [ \"$npm_config_target_platform\" == \"darwin\" ]; then electron-builder install-app-deps; fi",
     "make": "electron-forge make"
   },
   "author": "Technox Education",
