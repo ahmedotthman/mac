@@ -9,6 +9,8 @@ on:
 jobs:
   build:
     runs-on: macos-latest
+    env:
+      PYTHON: /usr/local/bin/python3  # Set PYTHON env variable globally
 
     steps:
     - uses: actions/checkout@v2
@@ -31,8 +33,12 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Configure Python Path
-      run: echo "PYTHON=$(which python)" >> $GITHUB_ENV
+    - name: Check Python installation
+      run: |
+        which python
+        which python3
+        python --version
+        python3 --version
 
     - name: Install Python dependencies
       run: |
@@ -47,5 +53,5 @@ jobs:
 
     - name: Build Electron app for macOS
       run: |
-        export PYTHON=$(which python)
+        export PYTHON=/usr/local/bin/python3  # Explicitly set Python path
         npm run build
