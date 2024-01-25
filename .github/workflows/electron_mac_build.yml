@@ -32,7 +32,7 @@ jobs:
         python-version: '3.x'
 
     - name: Modify PATH for Python
-      run: echo "/usr/local/bin:$PATH" >> $GITHUB_ENV
+      run: echo "/usr/local/bin" >> $GITHUB_PATH
 
     - name: Install Python dependencies
       run: |
@@ -46,5 +46,4 @@ jobs:
       run: npm run rebuild
 
     - name: Build Electron app for macOS
-      run: |
-        npm run build
+      run: npm run build
