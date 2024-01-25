@@ -9,21 +9,9 @@ on:
 jobs:
   build:
     runs-on: macos-latest
-    env:
-      PYTHON: /usr/local/bin/python3  # Set PYTHON env variable globally
 
     steps:
     - uses: actions/checkout@v2
-
-    - name: Debug Python path
-      run: |
-       echo "Python Path: $PYTHON"
-       ls -l /usr/bin/python*
-       ls -l /usr/local/bin/python*
-       shell: /bin/bash -e {0}
-        env:
-        PYTHON: /usr/local/bin/python3
-
 
     - name: Cache Node.js modules
       uses: actions/cache@v2
@@ -43,12 +31,14 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Check Python installation
+    - name: Debug Python path
       run: |
-        which python
-        which python3
-        python --version
-        python3 --version
+        echo "Python Path: $PYTHON"
+        ls -l /usr/bin/python*
+        ls -l /usr/local/bin/python*
+      shell: /bin/bash -e {0}
+      env:
+        PYTHON: /usr/local/bin/python3
 
     - name: Install Python dependencies
       run: |
@@ -62,6 +52,4 @@ jobs:
       run: npm run rebuild
 
     - name: Build Electron app for macOS
-      run: |
-        export PYTHON=/usr/local/bin/python3  # Explicitly set Python path
-        npm run build
+      run: npm run build
