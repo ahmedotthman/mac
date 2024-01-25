@@ -17,10 +17,7 @@ jobs:
       with:
         node-version: '16'  # Use Node.js version 16.x
     - name: Set up Python
-      run: |
-        sudo apt-get update
-        sudo apt-get install python3.12  # Install Python 3.12
-        export PYTHON=python3.12  # Set the correct Python version
+      run: sudo apt-get install python3.9  # Install Python 3.9
     - name: Install distutils
       run: sudo apt-get install python3-distutils  # Install distutils for Python
     - name: Clean npm Cache
