@@ -18,8 +18,11 @@ jobs:
     - name: Debug Python path
       run: |
        echo "Python Path: $PYTHON"
-       s -l /usr/bin/python*
+       ls -l /usr/bin/python*
        ls -l /usr/local/bin/python*
+       shell: /bin/bash -e {0}
+        env:
+        PYTHON: /usr/local/bin/python3
 
 
     - name: Cache Node.js modules
