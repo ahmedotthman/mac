@@ -2,27 +2,34 @@ name: Electron Build for macOS
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # You can use ubuntu-latest for Linux-based runners
+    runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v2
+
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '16'  # Use Node.js version 16.x
+        node-version: '16'
+
     - name: Set up Python
-      run: sudo apt-get install python3.9  # Install Python 3.9
+      run: sudo apt-get install python3.9
+
     - name: Install distutils
-      run: sudo apt-get install python3-distutils  # Install distutils for Python
+      run: sudo apt-get install python3-distutils
+
     - name: Clean npm Cache
       run: npm cache clean --force
+
     - name: Install dependencies
       run: npm install
+
     - name: Build Electron app for macOS
-      run: npm run build  # Use the correct script name
+      run: npm run build
