@@ -44,3 +44,10 @@ jobs:
 
     - name: Package Electron app for macOS
       run: npx electron-packager . --overwrite --platform=darwin --arch=x64 --out=release-builds --prune=true
+
+    - name: Upload Artifact
+      uses: actions/upload-artifact@v2
+      with:
+        name: electron-app
+        path: release-builds/
+    
