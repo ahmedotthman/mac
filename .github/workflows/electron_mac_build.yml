@@ -32,7 +32,7 @@ jobs:
         python-version: '3.x'
 
     - name: Modify PATH for Python
-      run: echo "/Users/runner/hostedtoolcache/Python/3.12.1/x64/bin:$PATH" >> $GITHUB_ENV
+      run: echo "/Users/runner/hostedtoolcache/Python/3.12.1/x64/bin" >> $GITHUB_PATH
 
     - name: Configure node-gyp Python path
       run: npm config set python /Users/runner/hostedtoolcache/Python/3.12.1/x64/bin/python
