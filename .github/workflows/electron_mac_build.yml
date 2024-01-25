@@ -46,4 +46,6 @@ jobs:
       run: npm run rebuild
 
     - name: Build Electron app for macOS
-      run: npm run build
+      run: |
+        export PYTHON=$(which python)
+        npm run build
