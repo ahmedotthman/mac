@@ -26,13 +26,13 @@ jobs:
       with:
         node-version: '16.13.0'
 
-    - name: Set up Python
+    - name: Set up Python 2
       uses: actions/setup-python@v2
       with:
         python-version: '2.x'
 
-    - name: Modify PATH for Python
-      run: echo "/usr/local/bin" >> $GITHUB_PATH
+    - name: Set PYTHON_PATH environment variable
+      run: echo "PYTHON_PATH=$(which python)" >> $GITHUB_ENV
 
     - name: Install Python dependencies
       run: |
