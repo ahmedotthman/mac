@@ -1,4 +1,4 @@
-name: Electron Build foor macOS
+name: Electron Build for macOS
 
 on:
   push:
@@ -43,11 +43,13 @@ jobs:
       run: npm run rebuild
 
     - name: Package Electron app for macOS
-      run: npx electron-packager . --overwrite --platform=darwin --arch=all --out=release-builds --prune=true
+      run: npx electron-packager . --overwrite --platform=darwin --arch=arm64 --out=release-builds --prune=true
+
+    - name: Set executable flag
+      run: chmod +x release-builds/ragabology-darwin-arm64/ragabology.app/Contents/MacOS/ragabology
 
     - name: Upload Artifact
       uses: actions/upload-artifact@v2
       with:
         name: electron-app
         path: release-builds/
-    
